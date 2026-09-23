@@ -63,3 +63,11 @@
 - ยืนยันว่า task ที่เกี่ยวข้องกับการออกหรือแสดงหมายเลขคิวมีสถานะ `รอ Q-02` ครบ 8 task
 
 ---
+
+## 2569-09-23 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
+
+- ไฟล์ที่สร้างหรือแก้: `backend/app/db/models.py`, `backend/app/db/session.py`, `backend/app/db/migrations/001_init.py`, `backend/tests/conftest.py`
+- ผล test: `cd backend && pytest tests/conftest.py -q` ผ่าน 1 test
+- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่ได้กำหนดรูปแบบหรือวิธีออกหมายเลขคิว เพราะ `Q-02` ยังเปิดอยู่ จึงเก็บ `queue_no` เป็น nullable
+
+---
