@@ -17,6 +17,14 @@
 
 ---
 
+## 2569-10-07 08.13 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: ร่าง (ยังไม่มีแถว AC-BKG-01 ใน test-cases.md)
+- TC ID ที่เสนอ: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3, TC-BKG-01-4
+- ผล: หยุดก่อนเขียนโค้ด test ตามคำสั่ง โหมดร่าง; รายงานว่า AC-BKG-01 ยังไม่ได้ผ่านการตรวจแถวในตารางและต้องเปลี่ยนสถานะเป็น "ใช้ได้" ก่อน จากนั้นสั่ง /testcases อีกครั้ง
+
+---
+
 ## 2569-09-23 14.20 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
 
 - ไฟล์ที่สร้าง: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T01_schema.py
