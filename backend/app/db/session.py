@@ -1,14 +1,17 @@
-import os
-
+# สร้าง engine และ session ของฐานข้อมูล (CON-TECH-01)
 from sqlalchemy import create_engine
-from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
+
+from app.config import DATABASE_URL
+
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(bind=engine, autoflush=False)
 
 
-def create_database_engine(database_url: str | None = None) -> Engine:
-    # รองรับ CON-TECH-01 โดยเลือกฐานข้อมูลผ่าน DATABASE_URL
-    url = database_url or os.getenv("DATABASE_URL", "sqlite:///booking.db")
-    connect_args = {"check_same_thread": False} if url.startswith("sqlite") else {}
-    return create_engine(url, connect_args=connect_args)
-
-
-engine = create_database_engine()
+def get_db():
+    """ส่ง session ให้ API แต่ละตัว แล้วปิดเมื่อจบ"""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
