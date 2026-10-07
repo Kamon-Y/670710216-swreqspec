@@ -25,6 +25,30 @@
 
 ---
 
+## 2569-10-07 08.21 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: หยุดตามเงื่อนไข: มีแถวของ AC-BKG-01 แล้ว แต่ทุกแถวยังมีสถานะ "ร่าง"
+- ตรวจพบ: [specs/001-booking/test-cases.md](specs/001-booking/test-cases.md) มี TC-BKG-01-1 ถึง TC-BKG-01-4 แต่สถานะทั้งหมดเป็น "ร่าง"
+- ผล: ไม่เขียนโค้ด test และไม่รัน pytest/vitest เนื่องจากต้องเปลี่ยนสถานะเป็น "ใช้ได้" ก่อน ก่อนอื่นให้ทีมตรวจแถวและแก้สถานะ ก่อนจากนั้นสั่ง /testcases อีกครั้ง
+
+---
+
+## 2569-10-07 08.28 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: ถูกบล็อกตามกติกา; มีแถว AC-BKG-01 แต่ยังไม่มีแถวใดที่สถานะเป็น "ใช้ได้"
+- ตรวจพบ: [specs/001-booking/test-cases.md](specs/001-booking/test-cases.md) มี 4 แถว และทั้งหมดมีสถานะ "ร่าง"
+- ผล: หยุดก่อนเขียน test และไม่รัน pytest/vitest ตามคำสั่งใน /testcases: ต้องให้ทีมตรวจแถวและตั้งสถานะเป็น "ใช้ได้" ก่อน จากนั้นจึงสั่ง /testcases อีกครั้ง
+
+---
+
+## 2569-10-07 08.35 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: ถูกบล็อกอีกครั้ง เนื่องจากยังไม่มีแถวสถานะ "ใช้ได้" สำหรับ AC-BKG-01
+- ตรวจพบ: [specs/001-booking/test-cases.md](specs/001-booking/test-cases.md) มีแถว TC-BKG-01-1 ถึง TC-BKG-01-4 แต่สถานะยังเป็น "ร่าง" ทั้งหมด
+- ผล: หยุดก่อนเขียน test หรือรัน pytest/vitest ตามกติกา; ให้ทีมตรวจและเปลี่ยนสถานะเป็น "ใช้ได้" ก่อน จากนั้นจึงสั่ง /testcases อีกครั้ง
+
+---
+
 ## 2569-09-23 14.20 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
 
 - ไฟล์ที่สร้าง: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T01_schema.py
