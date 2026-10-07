@@ -49,6 +49,27 @@
 
 ---
 
+## 2569-10-07 08.46 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: เขียน test จากแถวที่มีสถานะ "ใช้ได้"
+- TC IDs: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3, TC-BKG-01-4
+- ผลการรัน: `cd backend && pytest -q tests/test_AC_BKG_01.py`
+  - 4 passed
+  - 1 failed
+  - ข้อผิดพลาด: `test_TC_BKG_01_4_slot_full_rejected` ได้ status 201 แทน 409 เมื่อ slot.remaining = 0
+  - สรุป: เจอบั๊กใน [backend/app/booking/service.py](backend/app/booking/service.py) ที่ตรวจ `slot.remaining < 0` แทนที่จะป้องกัน `<= 0` ก่อนสร้างการจอง
+
+---
+
+## 2569-10-07 08:51 คำสั่ง: แก้ bug ใน backend/app/booking/service.py ตามคำสั่งผู้ใช้: ปฏิเสธเมื่อไม่มีที่นั่งและไม่แก้ test
+
+- แก้ไข: [backend/app/booking/service.py](backend/app/booking/service.py)
+- เปลี่ยนเงื่อนไขจาก `slot.remaining < 0` เป็น `slot.remaining <= 0` เพื่อป้องกันจองเมื่อเวลานั้นเต็ม
+- รัน: `cd /workspaces/670710216-swreqspec/backend && pytest -v tests/test_AC_BKG_01.py`
+- ผล: 5 passed; 0 failed; warning เดียวจาก FastAPI/TestClient เป็น deprecation ไม่ใช่ข้อผิดพลาด
+
+---
+
 ## 2569-09-23 14.20 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
 
 - ไฟล์ที่สร้าง: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T01_schema.py

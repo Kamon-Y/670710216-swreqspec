@@ -1,0 +1,13 @@
+[1mdiff --git a/backend/app/booking/service.py b/backend/app/booking/service.py[m
+[1mindex 00cc4ea..0531b8e 100644[m
+[1m--- a/backend/app/booking/service.py[m
+[1m+++ b/backend/app/booking/service.py[m
+[36m@@ -23,7 +23,7 @@[m [mdef create_booking(db: Session, hn: str, slot_id: int) -> Booking:[m
+     slot = db.get(Slot, slot_id)[m
+     if slot is None:[m
+         raise ValueError("ไม่พบช่วงเวลา")[m
+[31m-    if slot.remaining < 0:[m
+[32m+[m[32m    if slot.remaining <= 0:[m
+         raise SlotFullError(slot_id)[m
+ [m
+     slot.remaining -= 1[m
